@@ -1167,15 +1167,18 @@ h1, h2, h3, h4 {
 }
 
 /* BRAND COLORS */
-.footer-socials a:nth-child(2) i{
+/* LINKEDIN */
+.footer-socials a:nth-child(1) i{
   color: #0077b5;
 }
 
-.footer-socials a:nth-child(3) i{
+/* YOUTUBE */
+.footer-socials a:nth-child(2) i{
   color: #ff0000;
 }
 
-.footer-socials a:nth-child(4) i{
+/* EMAIL */
+.footer-socials a:nth-child(3) i{
   color: #ea4335;
 }
 
