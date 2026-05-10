@@ -255,6 +255,7 @@ backTop.addEventListener('click', () => {
 });
 
 /* ── CONTACT FORM VALIDATION ─────────────────────────────────── */
+/* ── CONTACT FORM VALIDATION ─────────────────────────────────── */
 const contactForm  = document.getElementById('contactForm');
 const formSuccess  = document.getElementById('formSuccess');
 
@@ -282,13 +283,13 @@ contactForm.addEventListener('submit', e => {
 
   if (nameInput.value.trim().length < 2) {
     nameInput.classList.add('error');
-    nameError.textContent = 'Please enter your name (at least 2 characters).';
+    nameError.textContent = 'Please enter your name.';
     valid = false;
   }
 
   if (!validateEmail(emailInput.value.trim())) {
     emailInput.classList.add('error');
-    emailError.textContent = 'Please enter a valid email address.';
+    emailError.textContent = 'Please enter a valid email.';
     valid = false;
   }
 
@@ -299,46 +300,47 @@ contactForm.addEventListener('submit', e => {
   }
 
   if (valid) {
+
     const btn = contactForm.querySelector('button[type="submit"]');
+
     btn.disabled = true;
-    btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+    btn.innerHTML = 'Sending...';
 
-    // EmailJS parameters
-    const templateParams = {
-      to_email: 'prabhakarsgaur12@email.com', // Your email
-      from_email: emailInput.value.trim(),
-      from_name: nameInput.value.trim(),
-      message: messageInput.value.trim(),
-      reply_to: emailInput.value.trim()
-    };
+    emailjs.send(
+      "service_hai46s4",
+      "template_t0novmp",
+      {
+        from_name: nameInput.value,
+        from_email: emailInput.value,
+        message: messageInput.value,
+        to_email: "prabhakarsgaur12@gmail.com"
+      }
+    )
+    .then(() => {
 
-    if (!isEmailJsReady) {
-      alert('Email service is temporarily unavailable. Please refresh or contact directly at prabhakarsgaur12@email.com');
+      formSuccess.classList.add('show');
+
+      contactForm.reset();
+
       btn.disabled = false;
       btn.innerHTML = '<i class="bx bx-send"></i> Send Message';
-      return;
-    }
 
-    // Send email using EmailJS
-    emailjs.send(
-      'service_hai46s4',  // Service ID
-      'template_t0novmp', // Template ID
-      templateParams
-    )
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        contactForm.reset();
-        formSuccess.classList.add('show');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="bx bx-send"></i> Send Message';
-        setTimeout(() => formSuccess.classList.remove('show'), 5000);
-      })
-      .catch(function(error) {
-        console.log('FAILED...', error);
-        alert('Failed to send message. Please try again or contact me directly at prabhakarsgaur12@email.com');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="bx bx-send"></i> Send Message';
-      });
+      setTimeout(() => {
+        formSuccess.classList.remove('show');
+      }, 5000);
+
+    })
+    .catch((error) => {
+
+      console.log(error);
+
+      alert("Failed to send message");
+
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bx bx-send"></i> Send Message';
+
+    });
+
   }
 });
 
