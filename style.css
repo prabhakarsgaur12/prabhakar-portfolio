@@ -1117,13 +1117,14 @@ h1, h2, h3, h4 {
   font-weight: 600;
 
   transition: 0.3s ease;
+
+  margin-top: 18px;
 }
 
 .contact-btn:hover{
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(124,92,255,0.35);
 }
-
 /* ===== FOOTER ===== */
 
 .footer{
