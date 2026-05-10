@@ -1158,18 +1158,34 @@ h1, h2, h3, h4 {
 
   border-radius: 14px;
 
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
 
-  color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   transition: 0.3s ease;
 }
 
+/* BRAND COLORS */
+
+.footer-socials a:nth-child(1) i{
+  color: #171515;
+}
+
+.footer-socials a:nth-child(2) i{
+  color: #0077b5;
+}
+
+.footer-socials a:nth-child(3) i{
+  color: #ff0000;
+}
+
+.footer-socials a:nth-child(4) i{
+  color: #ea4335;
+}
+
 .footer-socials a:hover{
-  background: #7c5cff;
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.05);
 }
 
 /* ===== RESPONSIVE ===== */
